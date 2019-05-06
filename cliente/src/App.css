@@ -1,0 +1,57 @@
+.App {
+  text-align: center;
+}
+
+.container{
+  width: 90%;
+  margin: 0 auto;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.listCont{
+  width: 50%;
+  float: left;
+}
+
+.detalleCont{
+  background-color: #999;
+  height: 25vh;
+  width: 49%;
+  float: left;
+  margin-top: 20%;
+}
+
+.usuarioDetalleCont{
+  padding-top: 10%;
+}
+
+.detalle-title{
+  color:white !important;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
