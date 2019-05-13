@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 import UsuarioInfo from './UsuarioLocacion/UsuarioInfo';
 
-// const apiUrl = "http://localhost:8080/api/detalle-usuario";
+const apiUrl = "http://localhost:8080/api/detalle-usuario/";
 
 // const data = {
 //     avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg",
@@ -25,17 +25,34 @@ class UsuarioDetalle extends Component<any, any> {
         this.state = { usuarioDetalle: null }
     }
 
+    public updateUser = (id:any) =>{
+        const userId = apiUrl + id;
+        fetch(userId).then(resolve => {
+            return resolve.clone().json();
+        }).then(data => {
+            this.setState({ usuarioDetalle: data.data });
+        });
+    }
+
+    public componentWillReceiveProps(nextProps){
+        if(nextProps.id !== this.props.id){
+            /*  seteamos el estado de usuarioDetalle a null 
+                para que cada vez que hagamos click en otro usuario 
+                salga la letra de usuarioDetalle 
+            */
+            this.setState({usuarioDetalle: null})
+            this.updateUser(nextProps.id);
+        }
+
+    }
+
     // Ciclo de carga del componente
     public componentDidMount() {
-        // fetch(apiUrl).then(resolve => {
-        //     return resolve.json();
-        // }).then(data => {
-        //     console.log(data);
-        // });
+        this.updateUser(this.props.id);
     }
 
     public renderDetalleinfo(usuarioDetalle: any) {
-        return usuarioDetalle.map((data: any, index:any) => (<UsuarioInfo key={index} data={data} />))
+        return <UsuarioInfo data={usuarioDetalle} />
     }
 
 

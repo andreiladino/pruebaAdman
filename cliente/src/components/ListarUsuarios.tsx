@@ -1,22 +1,23 @@
 import * as React from 'react';
-import UsuariosLocacion from './UsuarioLocacion';
+import Usuario from './UsuarioLocacion/Usuario';
 
-const ListarUsuarios = ({ names, onUsuarioSeleccionado }: any) => {
-    const handleUsuarioLocacionClick = (name: any) => {
-        onUsuarioSeleccionado(name);
+const ListarUsuarios = ({ data, onUsuarioSeleccionado }: any) => {
+    const handleUsuarioLocacionClick = (id: any) => {
+        onUsuarioSeleccionado(id);
     }
     // Iteramos el listado de usuarios pasando los datos al componente UsuariosLocacion
     const iterarListado = (fnames: any) => (
-        fnames.map((name: any) =>
-            <UsuariosLocacion
-                name={name}
-                key={name}
-                onUsuarioLocacionClick={() => handleUsuarioLocacionClick(name)} />)
+        fnames.map((fdata: any) =>
+            <Usuario
+                name={fdata.name}
+                avatar={fdata.avatar}
+                key={fdata.id}
+                onUsuarioLocacionClick={() => handleUsuarioLocacionClick(fdata.id)} />)
     );
 
     return (
         <div>
-            {iterarListado(names)}
+            {iterarListado(data)}
         </div>
     );
 };

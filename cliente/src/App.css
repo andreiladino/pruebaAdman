@@ -39,14 +39,14 @@
 
 .detalleCont{
   background-color: #999;
-  height: 25vh;
+  height: 33vh;
   width: 49%;
   float: left;
-  margin-top: 20%;
+  margin-top: 1%;
 }
 
 .usuarioDetalleCont{
-  padding-top: 10%;
+  padding-top: 2%;
 }
 
 .detalle-title{

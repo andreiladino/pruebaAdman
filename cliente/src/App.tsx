@@ -1,28 +1,34 @@
 import * as React from 'react';
-import './App.css';
-import ListarUsuarios from './components/ListarUsuarios';
-import UsuarioDetalle from './components/UsuarioDetalle';
+import ListarUsuariosContainers from './containers/ListarUsuariosContainers';
+import UsuarioDetalleContainer from './containers/UsuarioDetalleContainer';
 import logo from './logo.svg';
+import './App.css';
 
-const names = [
-  "Adolfo",
-  "Andrei",
-  "Mary",
+// const apiUrl = "http://localhost:8080/api/listar-usuarios";
+
+const data = [
+  {
+    avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg",
+    id: "1",
+    name: "George",
+  },
+  {
+    avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg",
+    id: "2",
+    name: "Janet",
+  },
+  {
+    avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/olegpogodaev/128.jpg",
+    id: "3",
+    name: "Emma",
+  }
 ];
+
 
 
 class App extends React.Component<any, any> {
 
-  constructor(props: any){
-    super(props);
-    this.state = { name: null }
-  }
-
-  public handleUsuarioSeleccionado = (name: any) => {
-    this.setState({ name });
-  }
   public render() {
-    const { name } = this.state;
     return (
       <div className="App">
         <header className="App-header">
@@ -31,14 +37,11 @@ class App extends React.Component<any, any> {
         </header>
 
         <div className="listCont">
-          <ListarUsuarios names={names}
-            onUsuarioSeleccionado={this.handleUsuarioSeleccionado} />
+          <ListarUsuariosContainers data={data} />
         </div>
-        
+
         <div className="detalleCont">
-          { name === null ? <h1 className='detalle-title'>No ha seleccionado usuario</h1> :     
-            <UsuarioDetalle name={name} />
-          }
+            <UsuarioDetalleContainer />  
         </div>
       </div>
     );
@@ -46,3 +49,6 @@ class App extends React.Component<any, any> {
 }
 
 export default App;
+
+
+
