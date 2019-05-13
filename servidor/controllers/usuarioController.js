@@ -44,9 +44,10 @@ function listarUsuarios(req, res) {
         if (error) {
             res.status(500).send({ message: "Error en el servicio" });
         }
+        var dataArray = JSON.parse(body)
         res.status(200).send({
             message: "Consulta exitosa",
-            result: JSON.parse(body)
+            result: dataArray.data
         });
     });
 }
@@ -54,8 +55,7 @@ function listarUsuarios(req, res) {
 
 function detalleUsuario(req, res) {
 
-    var params = req.body;
-    var id = params.id;
+    var id = req.params.id;
     var url = 'https://reqres.in/api/users/' + id;
     request.get({
         "headers": { "content-type": "application/json" },
@@ -64,9 +64,10 @@ function detalleUsuario(req, res) {
         if (error) {
             res.status(500).send({ message: "Error en el servicio" });
         }
+
+        var dataArray = JSON.parse(body)
         res.status(200).send({
-            message: "Consulta exitosa",
-            result: JSON.parse(body)
+            data: dataArray.data
         });
     });
 }
